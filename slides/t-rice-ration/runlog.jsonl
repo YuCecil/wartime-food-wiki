@@ -1,0 +1,11 @@
+{"time": "2026-11-17T22:54:54", "gate": "覆蓋率", "round": 1, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-17T22:55:28", "gate": "證據卡", "round": 1, "result": "退回", "problems": ["s-2017-tseng-table-war#E5：事實裡的數字 ['1942'] 原文裡沒有（換算或抄錯？）", "s-2017-tseng-table-war#E7：事實裡的數字 ['1940', '3', '4'] 原文裡沒有（換算或抄錯？）", "s-2017-tseng-table-war#E8：事實裡的數字 ['1941'] 原文裡沒有（換算或抄錯？）"], "note": ""}
+{"time": "2026-11-17T22:55:41", "gate": "證據卡", "round": 2, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-17T22:56:04", "gate": "證據卡", "round": 3, "result": "退回", "problems": ["s-2009-li-grain-regulation#E5：原文「並抵制納入組合，延至 1941 年 6 …」在 raw/ 的資料裡找不到（抄錯或是自己改寫了）"], "note": ""}
+{"time": "2026-11-17T22:56:33", "gate": "證據卡", "round": 4, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-17T22:57:01", "gate": "證據卡", "round": 5, "result": "退回", "problems": ["s-2017-huang-wartime-food-management#E7：事實裡的數字 ['1945'] 原文裡沒有（換算或抄錯？）"], "note": ""}
+{"time": "2026-11-17T22:57:08", "gate": "證據卡", "round": 6, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-17T22:57:34", "gate": "證據卡", "round": 7, "result": "退回", "problems": ["s-2013-tseng-hometown#E1：事實裡的數字 ['2', '3', '5'] 原文裡沒有（換算或抄錯？）", "s-2013-tseng-hometown#E1：原文超過 50 字（57 字）", "s-2025-lu-police-society#E3：事實裡的數字 ['1945'] 原文裡沒有（換算或抄錯？）"], "note": ""}
+{"time": "2026-11-17T22:57:44", "gate": "證據卡", "round": 8, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-17T22:58:21", "gate": "大綱", "round": 1, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-17T22:58:29", "gate": "大綱", "round": 2, "result": "通過", "problems": [], "note": ""}

@@ -101,8 +101,16 @@ def finish(tid, gate, problems, back, note=""):
     if ok:
         print(f"✓ {gate}：第 {n} 輪通過")
         return 0
-    if n >= MAX_ROUNDS:
-        print(f"■ {gate}：已經 {n} 輪沒過，停下來交給使用者（硬上限 {MAX_ROUNDS} 輪）")
+    # 剎車看「上次通過之後連續沒過幾輪」：通過的那輪不算，新加進來的資料第一次檢查也不會被舊輪數拖累
+    streak = 0
+    for rec in reversed([json.loads(x) for x in (d(tid) / "runlog.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()]):
+        if rec["gate"] != gate:
+            continue
+        if rec["result"] == "通過":
+            break
+        streak += 1
+    if streak >= MAX_ROUNDS:
+        print(f"■ {gate}：連續 {streak} 輪沒過，停下來交給使用者（硬上限 {MAX_ROUNDS} 輪）")
         return 3
     print(f"→ {gate}：第 {n} 輪沒過，{len(problems)} 個問題。退回：{back}")
     return 1

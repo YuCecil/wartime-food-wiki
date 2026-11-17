@@ -5,7 +5,7 @@ title: 經濟警察
 kind: 機構
 period: [1938, 1945]
 summary: 專門取締黑市、囤貨與違反公定價格的警察。
-sources: [s-2017-tseng-table-war]
+sources: [s-2017-tseng-table-war, s-2025-lu-police-society]
 ---
 
 ## 是什麼
@@ -14,9 +14,13 @@ sources: [s-2017-tseng-table-war]
 
 ## 在故事裡的角色
 
+除了抓黑市，經濟警察也負責確保糧食配給、限制自由買賣和徵收物資，透過保甲、宣導或強制力讓生產者把剩餘交出來（[陸文楓 2025](../sources/s-2025-lu-police-society.md) 頁 46–47）。戰爭一結束，他們成了民眾發洩的對象：1945 年 9 月 10 日臺南發生毆打經濟警察事件（同上，頁 58）。
+
 負責查惜賣、囤積和黑市。他們在市場突襲檢查、在城鄉交界攔截偷運的農產品，但小販們早就練出一聽到風聲就散的本事。也有過度執法的冤案，連價格查定委員吳修齊都被羅織黑市罪名關押（[曾品滄 2017](../sources/s-2017-tseng-table-war.md) 頁 22–23、25）。
 
 ## 出現在哪些主題
 
 - [龍山寺前的秘密市場：黑市](../topics/t-black-market.md)
 - [十天一次的豬肉](../topics/t-pork-and-sides.md)
+- [一天能吃多少米？米穀配給](../topics/t-rice-ration.md)
+- [戰爭結束了，米卻更少了：戰後米荒](../topics/t-postwar-famine.md)

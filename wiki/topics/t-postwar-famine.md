@@ -7,7 +7,7 @@ period: [1945, 1947]
 summary: 終戰後一斤米從 1.9 元漲到 71 元，臺灣人反而買不起米。
 image: t-postwar-famine.jpg
 imageAlt: 木刻版畫風插畫：米店木門緊閉，門前擠滿提著空米袋、神情焦急的人。
-sources: [s-2014-su-postwar-rice, s-2009-li-grain-regulation, s-2025-chen-rice-price-dataset, s-2025-chen-rice-price-1945-1947, s-2023-wu-rice-shortage-excerpt, s-2018-tseng-public-diet, s-2016-huang-wartime-agri-policy, s-2019-huang-irrigation-farm-org, s-2015-tseng-postwar-food-control]
+sources: [s-2014-su-postwar-rice, s-2009-li-grain-regulation, s-2025-chen-rice-price-dataset, s-2025-chen-rice-price-1945-1947, s-2023-wu-rice-shortage-excerpt, s-2018-tseng-public-diet, s-2016-huang-wartime-agri-policy, s-2019-huang-irrigation-farm-org, s-2015-tseng-postwar-food-control, s-2025-lu-police-society]
 updated: 2026-11-17
 ---
 
@@ -26,6 +26,8 @@ updated: 2026-11-17
 接收初期，新政府其實延續了日本時代的管制：1945 年 10 月 31 日頒布「管理糧食臨時辦法」，繼續收購和配給（[蘇瑤崇 2014](../sources/s-2014-su-postwar-rice.md) 頁 103）。可是跟日本時代不同，這次**只配給公教人員**，一般人得自己去零售店買；負責收米、配米的農業會和食糧營團，也要到 1946 年 3 月才被接收（[曾獻緯 2015](../sources/s-2015-tseng-postwar-food-control.md) 頁 61–62）。農民交了米卻領不到配給，缺糧時還得去黑市買，當時的說法是「賣的是公價，買的是黑市價」（[曾獻緯 2015](../sources/s-2015-tseng-postwar-food-control.md) 頁 64）。但當年 12 月，官定米價每臺斤 1 元，黑市已經喊到 5 元 5 角到 6 元（[蘇瑤崇 2014](../sources/s-2014-su-postwar-rice.md) 頁 109）。政府的收購價也遠低於市價：1946 年征購價每百斤 106.23 元，而 1945 年 12 月市場上每百斤要 253.84 元（[蘇瑤崇 2014](../sources/s-2014-su-postwar-rice.md) 頁 117）。
 
 1946 年 1 月 11 日，政府突然宣布廢除米穀管制，隔天起停止配給、米可以自由買賣（[蘇瑤崇 2014](../sources/s-2014-su-postwar-rice.md) 頁 119）。在這之前，臺灣廣播電台做過一次糧食民意測驗，結果反對配給 32,656 票、贊成 24,404 票（[蘇瑤崇 2014](../sources/s-2014-su-postwar-rice.md) 頁 118）。但同一時間，政府在各地**封存**倉庫裡的存米。糧食局自己報的數字是 15,324 噸，蘇瑤崇從另一份電文推算，實際可能超過 11 萬噸（[蘇瑤崇 2014](../sources/s-2014-su-postwar-rice.md) 頁 122–123）。市場上的米一下子變少，價格應聲上漲：臺北每公斤米 1 月 11.12 元、2 月 21.57 元、3 月 29.67 元（[曾獻緯 2015](../sources/s-2015-tseng-postwar-food-control.md) 頁 70）。霧峰鄉民數百人到公所抗議，竹東有數百人攻進農業會倉庫拿走 10 萬斤米（[曾獻緯 2015](../sources/s-2015-tseng-postwar-food-control.md) 頁 70）。
+
+米荒時，地方上也有人自己想辦法。1946 年 2 月，鹿港的義勇警察隊和各部落會長一起調查貧困的人家，分配平價米（[陸文楓 2025](../sources/s-2025-lu-police-society.md) 頁 87）。在這之前幾個月，日本時代管配給的經濟警察已經成了眾矢之的：1945 年 9 月 10 日臺南有人毆打經濟警察，後來還擴大成攻擊替日本官方做事的臺灣人（同上，頁 58）。
 
 封存的米去了哪裡？霧峰的林獻堂在日記裡記下，1946 年 3 月有人要從臺中縣調走 4,000 噸米；3 月 14 日，霧峰農業會的 2,000 多包存米被搬得一空（[蘇瑤崇 2014](../sources/s-2014-su-postwar-rice.md) 頁 123–124）。
 
@@ -103,6 +105,7 @@ Gleason（1956）估算的每人每日可供量，轉引自曾品滄（2018）�
 
 ## 延伸閱讀
 
+- [陸文楓 2025](../sources/s-2025-lu-police-society.md)（警察與社會，戰後義警分配平價米）
 - [蘇瑤崇 2014](../sources/s-2014-su-postwar-rice.md)
 - [陳懷德、楊海亮 2025](../sources/s-2025-chen-rice-price-dataset.md)
 - [陳懷德、楊海亮 2025](../sources/s-2025-chen-rice-price-1945-1947.md)

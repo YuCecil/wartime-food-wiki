@@ -2,7 +2,7 @@
 
 > 由 `python3 tools/wiki.py index` 自動產生，不要手改。
 
-共 9 個故事、30 份資料卡、7 個名詞。
+共 9 個故事、31 份資料卡、7 個名詞。
 
 ## 故事（主題頁）
 
@@ -13,7 +13,7 @@
 | [四萬元換一元：惡性通膨](topics/t-inflation.md) | 鈔票越印越多，四年間發行量增加兩百多倍。 | 4 | 還沒做 |
 | [十天一次的豬肉](topics/t-pork-and-sides.md) | 豬肉是臺灣人餐桌和祭桌的核心，黑市裡的豬肉交易特別盛行。 | 3 | 還沒做 |
 | [戰爭結束了，米卻更少了：戰後米荒](topics/t-postwar-famine.md) | 終戰後一斤米從 1.9 元漲到 71 元，臺灣人反而買不起米。 | 8 | 還沒做 |
-| [一天能吃多少米？米穀配給](topics/t-rice-ration.md) | 1940 年起，臺灣人吃的每一粒米都由政府分配。 | 6 | 還沒做 |
+| [一天能吃多少米？米穀配給](topics/t-rice-ration.md) | 1940 年起，臺灣人吃的每一粒米都由政府分配。 | 7 | 還沒做 |
 | [番薯籤、野菜與蝸牛：代用食](topics/t-substitute-food.md) | 米不夠，就用番薯籤、樹薯粉和田邊的野菜補。 | 5 | 還沒做 |
 | [嘴上說平等：分等級的配給](topics/t-unequal-ration.md) | 口號是「內臺一體」，但豬肉、砂糖、木炭都分三六九等。 | 1 | 還沒做 |
 | [孩子吃什麼：戰時的營養與學童](topics/t-wartime-children.md) | 戰時國家開始量孩子的「體位」，孩子實際吃了什麼，史料卻很少。 | 6 | 還沒做 |
@@ -39,6 +39,7 @@
 | [戰後臺灣米荒問題新探（1945-1946）](sources/s-2014-su-postwar-rice.md) | 蘇瑤崇 | 2014 | 全文 | 高 |
 | [營養論述與殖民統治：日治時期臺灣的乳品生產與消費](sources/s-2015-chen-dairy.md) | 陳玉箴 | 2015 | 摘要 | 高 |
 | [戰時戰後的臺灣農政](sources/s-2016-huang-wartime-agri-policy.md) | 黃仁姿 | 2016 | 摘要 | 中 |
+| [戰爭與糧食：二戰期間臺灣糧食管理體制的建構（1939-1945）](sources/s-2017-huang-wartime-food-management.md) | 黃仁姿 | 2017 | 全文 | 高 |
 | [餐桌上的戰爭：日治末期臺灣的食物配給、黑市與殖民地社會](sources/s-2017-tseng-table-war.md) | 曾品滄 | 2017 | 全文 | 高 |
 | [Food for Empire: Wartime Food Politics on the Korean Homefront, 1937–1945（帝國的糧食：朝鮮後方的戰時食物政治）](sources/s-2018-ko-food-for-empire.md) | Sunho Ko | 2018 | 摘要 | 中 |
 | [戰時體制與臺灣大眾飲食的發展（1947–1950 年代）](sources/s-2018-tseng-public-diet.md) | 曾品滄 | 2018 | 全文 | 高 |

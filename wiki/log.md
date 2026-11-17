@@ -9,3 +9,8 @@
 - 連結從 [[id]] 改成相對路徑 Markdown 連結（GitHub 與 Obsidian 都點得開）
 - 新的健檢把引文上限從舊程式的 60 字改回規則寫的 50 字，並改成英文以單字計
 - 新增簡報 graph：.agents/workflows/story-slides.md、tools/slides.py、templates/deck.html
+
+## [2026-11-17] ingest | 戰爭與糧食：二戰期間臺灣糧食管理體制的建構（黃仁姿 2017）
+- 新增：s-2017-huang-wartime-food-management（全文，國史館館刊 52）
+- 更新：t-rice-ration（臺灣比日本早一步總收購、合與公克的換算、1945 年減量、配給米只撐二十多天、研究者怎麼看＋2 條、還不知道的事改寫 2 條）
+- 發現：1942–1944 年米產量有兩套統計（《臺灣米穀要覽》vs《臺灣食糧年鑑》），1944 年差了 47 萬石，兩說並列

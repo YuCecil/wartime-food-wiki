@@ -7,7 +7,7 @@ period: [1939, 1945]
 summary: 1940 年起，臺灣人吃的每一粒米都由政府分配。
 image: t-rice-ration.jpg
 imageAlt: 木刻版畫風插畫：田邊的收購場，農民挑著稻穀排隊，辦事員用大秤秤重、登記。
-sources: [s-2017-tseng-table-war, s-2009-li-grain-regulation, s-2019-huang-irrigation-farm-org, s-2016-huang-wartime-agri-policy, s-2022-li-rice-production-tw-kr, s-1939-tnn-setsumai, s-2017-huang-wartime-food-management]
+sources: [s-2017-tseng-table-war, s-2009-li-grain-regulation, s-2019-huang-irrigation-farm-org, s-2016-huang-wartime-agri-policy, s-2022-li-rice-production-tw-kr, s-1939-tnn-setsumai, s-2017-huang-wartime-food-management, s-2015-tseng-postwar-food-control]
 updated: 2026-11-17
 ---
 
@@ -23,7 +23,7 @@ updated: 2026-11-17
 
 那場大旱有多嚴重？朝鮮運到日本的米，從 1939 年的 569 萬石掉到 1940 年的 39.5 萬石。日本只好轉向臺灣：1940 年規劃由臺灣移出 500 萬石，比 1939 年的 393 萬石多約 106 萬石（[李力庸 2009](../sources/s-2009-li-grain-regulation.md) 頁 77–78）。
 
-規則是這樣的：種稻的農家扣掉自己要吃的和留做種子的，其餘由政府用公定價格強制收購，這叫「供出」。不只米，番薯、麥、大豆、花生、麵類也都包括在內（[曾品滄 2017](../sources/s-2017-tseng-table-war.md) 頁 9）。
+規則是這樣的：種稻的農家扣掉自己要吃的和留做種子的，其餘由政府用公定價格強制收購，這叫「供出」。不只米，番薯、麥、大豆、花生、麵類也都包括在內（[曾品滄 2017](../sources/s-2017-tseng-table-war.md) 頁 9）。交米和領米是綁在一起的：林獻堂 1945 年的日記寫到，南屯的佃農因為交的穀子不夠，只好「盡將伙食粟以抵額」，結果還是拿不到配給券（[曾獻緯 2015](../sources/s-2015-tseng-postwar-food-control.md) 頁 59）。
 
 負責收米的機構也一路整併。碾米業者與倉庫業者組成的「米穀納入組合」，是統一向農家收米的單位，成立時間兩位研究者寫得不同：黃仁姿寫 1940 年組成（[黃仁姿、薛化元 2019](../sources/s-2019-huang-irrigation-farm-org.md) 頁 132）；李力庸寫 1939 年就頒布了這套體制，但米商抵制，拖到 1941 年 6 月才全面運作（[李力庸 2009](../sources/s-2009-li-grain-regulation.md) 頁 90）。1943 年 12 月 29 日公布〈臺灣食糧管理令〉，主要糧食全部由政府收購、委託各地農業會辦理；配給則交給另一個機構「食糧營團」（[黃仁姿、薛化元 2019](../sources/s-2019-huang-irrigation-farm-org.md) 頁 133；[李力庸 2009](../sources/s-2009-li-grain-regulation.md) 頁 97）。一般家庭拿著「家庭用米穀配給券」，大約一個月去買兩次配給米（[李力庸 2009](../sources/s-2009-li-grain-regulation.md) 頁 93）。
 
@@ -110,6 +110,7 @@ updated: 2026-11-17
 - [曾品滄 2017](../sources/s-2017-tseng-table-war.md)
 - [李力庸 2009](../sources/s-2009-li-grain-regulation.md)
 - [黃仁姿 2017](../sources/s-2017-huang-wartime-food-management.md)
+- [曾獻緯 2015](../sources/s-2015-tseng-postwar-food-control.md)
 - [黃仁姿、薛化元 2019](../sources/s-2019-huang-irrigation-farm-org.md)
 - [臺灣日日新報 1939](../sources/s-1939-tnn-setsumai.md)（報紙標題清單，只有標題）
 - [李力庸 2022](../sources/s-2022-li-rice-production-tw-kr.md)（本站只讀到摘要）

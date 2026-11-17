@@ -2,7 +2,7 @@
 
 > 由 `python3 tools/wiki.py index` 自動產生，不要手改。
 
-共 9 個故事、32 份資料卡、7 個名詞。
+共 9 個故事、33 份資料卡、7 個名詞。
 
 ## 故事（主題頁）
 
@@ -13,8 +13,8 @@
 | [四萬元換一元：惡性通膨](topics/t-inflation.md) | 鈔票越印越多，四年間發行量增加兩百多倍。 | 4 | 還沒做 |
 | [十天一次的豬肉](topics/t-pork-and-sides.md) | 豬肉是臺灣人餐桌和祭桌的核心，黑市裡的豬肉交易特別盛行。 | 3 | 還沒做 |
 | [戰爭結束了，米卻更少了：戰後米荒](topics/t-postwar-famine.md) | 終戰後一斤米從 1.9 元漲到 71 元，臺灣人反而買不起米。 | 9 | 還沒做 |
-| [一天能吃多少米？米穀配給](topics/t-rice-ration.md) | 1940 年起，臺灣人吃的每一粒米都由政府分配。 | 8 | 還沒做 |
-| [番薯籤、野菜與蝸牛：代用食](topics/t-substitute-food.md) | 米不夠，就用番薯籤、樹薯粉和田邊的野菜補。 | 5 | 還沒做 |
+| [一天能吃多少米？米穀配給](topics/t-rice-ration.md) | 1940 年起，臺灣人吃的每一粒米都由政府分配。 | 9 | 還沒做 |
+| [番薯籤、野菜與蝸牛：代用食](topics/t-substitute-food.md) | 米不夠，就用番薯籤、樹薯粉和田邊的野菜補。 | 6 | 還沒做 |
 | [嘴上說平等：分等級的配給](topics/t-unequal-ration.md) | 口號是「內臺一體」，但豬肉、砂糖、木炭都分三六九等。 | 1 | 還沒做 |
 | [孩子吃什麼：戰時的營養與學童](topics/t-wartime-children.md) | 戰時國家開始量孩子的「體位」，孩子實際吃了什麼，史料卻很少。 | 6 | 還沒做 |
 
@@ -51,6 +51,7 @@
 | [日治時期臺灣與朝鮮的米作──生產體系的比較](sources/s-2022-li-rice-production-tw-kr.md) | 李力庸 | 2022 | 摘要 | 高 |
 | [米荒（《台灣經濟四百年》書摘：誰的失去？政府價格管制的魔術之手）](sources/s-2023-wu-rice-shortage-excerpt.md) | 吳聰敏 | 2023 | 全文 | 中 |
 | [The process of building evacuation in Taiwan under Japanese rule（日治時期臺灣的建物疎開過程）](sources/s-2024-takada-building-evacuation.md) | Yuki Takada | 2024 | 全文 | 低 |
+| [戰爭時期的糧食管制](sources/s-2024-tsai-wartime-food-control.md) | 蔡承豪 | 2024 | 全文 | 低 |
 | [Rice Price Dynamics during the 1945–1947 Famine in Post-War Taiwan: A Quantitative Reassessment](sources/s-2025-chen-rice-price-1945-1947.md) | 陳懷德、楊海亮 | 2025 | 全文 | 低 |
 | [戰後臺灣糧荒時期米價研究資料集（1945.8–1947.3）](sources/s-2025-chen-rice-price-dataset.md) | 陳懷德、楊海亮 | 2025 | 全文 | 中 |
 | [Taiwan's Forgotten War: WWII Survivors Remember US Bombing Raid On Taipei](sources/s-2025-thomas-taipei-raid.md) | Bryn Thomas | 2025 | 全文 | 低 |

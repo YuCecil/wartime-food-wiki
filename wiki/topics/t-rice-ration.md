@@ -7,7 +7,7 @@ period: [1939, 1945]
 summary: 1940 年起，臺灣人吃的每一粒米都由政府分配。
 image: t-rice-ration.jpg
 imageAlt: 木刻版畫風插畫：田邊的收購場，農民挑著稻穀排隊，辦事員用大秤秤重、登記。
-sources: [s-2017-tseng-table-war, s-2009-li-grain-regulation, s-2019-huang-irrigation-farm-org, s-2016-huang-wartime-agri-policy, s-2022-li-rice-production-tw-kr, s-1939-tnn-setsumai, s-2017-huang-wartime-food-management, s-2015-tseng-postwar-food-control]
+sources: [s-2017-tseng-table-war, s-2009-li-grain-regulation, s-2019-huang-irrigation-farm-org, s-2016-huang-wartime-agri-policy, s-2022-li-rice-production-tw-kr, s-1939-tnn-setsumai, s-2017-huang-wartime-food-management, s-2015-tseng-postwar-food-control, s-2024-tsai-wartime-food-control]
 updated: 2026-11-17
 ---
 
@@ -33,7 +33,7 @@ updated: 2026-11-17
 
 紙上的標準是一回事，實際拿到的又是另一回事。1940 年 3 月新竹市把一般人的配給從 2 合 5 勺減成 2 合 2 勺；4 月澎湖減到 2 合，連產米的屏東也只配 1 合 7 勺。霧峰的林獻堂在 1941 年的日記裡嘆氣：配給米減了兩成，「非以蕃薯代用不可」（[曾品滄 2017](../sources/s-2017-tseng-table-war.md) 頁 11–12）。小說與回憶錄裡也常寫到：一個月份的配給米往往只能撐二十多天，剩下的日子要靠黑市或摻番薯籤（[黃仁姿 2017](../sources/s-2017-huang-wartime-food-management.md) 頁 65）；米店平時像歇業一樣，只有領米的日子，大家才拿著配給證上門（[黃仁姿 2017](../sources/s-2017-huang-wartime-food-management.md) 頁 50）。
 
-政府還規定每個月逢 5、10、15……的日子是「節米日」：家裡三餐要有一餐吃粥或代用食，餐館、喫茶店當天不准賣白飯（[曾品滄 2017](../sources/s-2017-tseng-table-war.md) 頁 10）。
+政府還規定每個月逢 5、10、15……的日子是「節米日」：家裡三餐要有一餐吃粥或代用食，餐館、喫茶店當天不准賣白飯（[曾品滄 2017](../sources/s-2017-tseng-table-war.md) 頁 10）。另一篇短文寫，1943 年底起規定更嚴：每天米食最多只能占主食的七成，旅館、食堂不准賣白米飯，不過旅館和料理屋私下照樣端出白米（[蔡承豪 2024](../sources/s-2024-tsai-wartime-food-control.md) 頁 20）。
 
 報紙也記下了節米運動從中央推到地方的過程。1939 年 10 月，《臺灣日日新報》登出日本農商大臣宣布「節米政策斷行」，同月節米的勅令案也送交總動員審議會（[臺灣日日新報 1939](../sources/s-1939-tnn-setsumai.md)，1939-10-07、1939-10-31）。1940 年 3 月，總督府決定限制米作為工業原料，稻穀與糙米也禁止作飼料（同上，1940-03-02）。同一個月，地方陸續行動：臺北州通牒「一週一回米飯拔き」（一週一次不吃白飯），高雄州定 1 日與 15 日為節米日，苗栗郡把購米分成五個階段、改用切符制（同上，1940-03-01、1940-03-09、1940-03-26）。
 
@@ -111,6 +111,7 @@ updated: 2026-11-17
 - [李力庸 2009](../sources/s-2009-li-grain-regulation.md)
 - [黃仁姿 2017](../sources/s-2017-huang-wartime-food-management.md)
 - [曾獻緯 2015](../sources/s-2015-tseng-postwar-food-control.md)
+- [蔡承豪 2024](../sources/s-2024-tsai-wartime-food-control.md)（科普短文，刊名未印出）
 - [黃仁姿、薛化元 2019](../sources/s-2019-huang-irrigation-farm-org.md)
 - [臺灣日日新報 1939](../sources/s-1939-tnn-setsumai.md)（報紙標題清單，只有標題）
 - [李力庸 2022](../sources/s-2022-li-rice-production-tw-kr.md)（本站只讀到摘要）

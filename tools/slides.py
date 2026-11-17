@@ -9,7 +9,7 @@
   python3 tools/slides.py script <id>      ⑤ 逐頁稿關卡：每句有出處、數字對得上證據卡、每頁字數
   python3 tools/slides.py review <id>      ⑥ 讀 AI 審查報告（review.md），列出要退回的頁
   python3 tools/slides.py build <id>       ⑦ 渲染：逐頁稿 → deck.html（程式做，不改任何字）
-  python3 tools/slides.py render <id>      ⑧ 渲染檢查：桌機與手機每頁不溢出、圖片與連結都在（需要 .venv）
+  python3 tools/slides.py render <id>      ⑧ 渲染檢查：桌機每頁不溢出、圖片與連結都在（需要 .venv）
   python3 tools/slides.py report <id>      ⑨ 交件：把所有關卡紀錄整理成 report.md
 
 結束碼：0＝通過；1＝沒通過，照輸出退回指定的節點；3＝停下來交給人。
@@ -31,6 +31,8 @@ PAGES_MIN, PAGES_MAX = 8, 10        # 訪談第 10 題：8–10 頁
 MAX_CHARS = 170                     # 每頁字數上限（不含出處）；自學用，比上台簡報多，但手機要放得下
 MAX_ROUNDS = 3                      # 同一關最多重跑 3 輪，再不過就停下交給人
 MIN_SOURCES = 3                     # 覆蓋率：至少 3 份讀過全文或部分的資料
+UNIT = re.compile(r"[\d一二三四五六七八九十]\s*[合勺]|\d\s*公?克")
+RICE_BASES = ("糙米", "七分搗米", "白米")
 CONTENT = {"text", "number", "compare", "quote", "image", "summary"}
 LAYOUTS = CONTENT | {"cover", "goals", "check"}
 CITE = re.compile(r"\[(s-[a-z0-9\-]+)#(E\d+)\]")
@@ -149,7 +151,7 @@ def parse_cards(tid):
     for f in sorted((d(tid) / "cards").glob("s-*.md")):
         sid = f.stem
         for m in re.finditer(r"^## (E\d+)\s*\n(.*?)(?=^## |\Z)", f.read_text(encoding="utf-8"), re.M | re.S):
-            fields = dict(re.findall(r"^(事實|頁|原文|用途)：\s*(.+)$", m.group(2), re.M))
+            fields = dict(re.findall(r"^(事實|頁|原文|用途|基準)：\s*(.+)$", m.group(2), re.M))
             cards[f"{sid}#{m.group(1)}"] = fields
     return cards
 
@@ -180,6 +182,9 @@ def cmd_cards(tid):
         missing = nums(f.get("事實", "")) - nums(quote)
         if missing:
             problems.append(f"{key}：事實裡的數字 {sorted(missing)} 原文裡沒有（換算或抄錯？）")
+        # 量米的數字一定要寫基準（糙米／七分搗米…）：2 合 3 勺（七分搗米）和 2 合 5 勺（糙米）是同一個量，混著比會講錯
+        if UNIT.search(f.get("事實", "")) and not f.get("基準"):
+            problems.append(f"{key}：事實裡有合／勺／公克，要加一行「基準：」寫清楚是糙米、七分搗米，或「原文未說明」")
         n = len(re.findall(r"[぀-ヿ㐀-鿿]", quote)) + len(re.findall(r"[A-Za-z]+", quote))
         if n > 50:
             problems.append(f"{key}：原文超過 50 字（{n} 字）")
@@ -305,6 +310,7 @@ def cmd_script(tid):
                 problems.append(f"{w}：自我檢查要 3 題，每題下一行寫「答案：…（第 x 頁）」")
         if p["layout"] in ("cover", "goals", "check"):
             continue
+        bases = set()
         for l in p["lines"]:
             if l.startswith(("圖：", "（推論）")):
                 continue
@@ -319,9 +325,18 @@ def cmd_script(tid):
                     problems.append(f"{w}：引用的證據 {key} 不存在")
                 else:
                     facts += cards[key].get("事實", "") + cards[key].get("原文", "")
+            for sid, e in cites:
+                b = cards.get(f"{sid}#{e}", {}).get("基準", "")
+                bases.update(x for x in RICE_BASES if x in b)
             extra = nums(plain(l)) - nums(facts)
             if extra:
                 problems.append(f"{w}：數字 {sorted(extra)} 在引用的證據卡裡找不到：{plain(l)[:24]}…")
+        # 同一頁用到不同基準的量（例：糙米 2 合 5 勺 vs 七分搗米 330 公克），頁面上要把每種基準都寫出來
+        page_text = p["title"] + "".join(p["lines"])
+        if len(bases) > 1:
+            missing = [b for b in sorted(bases) if b not in page_text]
+            if missing:
+                problems.append(f"{w}：這頁混用了 {'、'.join(sorted(bases))} 的量，但頁面上沒寫出「{'、'.join(missing)}」，讀者會拿不同基準的數字直接比")
     return finish(tid, "逐頁稿", problems, "⑤ 逐頁稿：只修列出的那幾頁（證據卡本身錯就退回 ③）")
 
 
@@ -354,7 +369,8 @@ def render_line(l, cards):
     text = html.escape(plain(l))
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
     if cites:
-        text += ' <span class="cites">（' + "；".join(cite_html(s, e, cards) for s, e in cites) + "）</span>"
+        links = list(dict.fromkeys(cite_html(s, e, cards) for s, e in cites))  # 同一份資料同一頁只列一次
+        text += ' <span class="cites">（' + "；".join(links) + "）</span>"
     return text
 
 
@@ -433,7 +449,7 @@ def cmd_render(tid):
     problems = []
     with sync_playwright() as pw:
         b = pw.chromium.launch(channel="chrome")
-        for name, vp in (("桌機", {"width": 1280, "height": 800}), ("手機", {"width": 375, "height": 740})):
+        for name, vp in (("桌機", {"width": 1280, "height": 800}),):  # 使用者決定不做手機截圖檢查（2026-11-17）
             pg = b.new_page(viewport=vp)
             errs = []
             pg.on("console", lambda m: errs.append(m.text) if m.type == "error" else None)

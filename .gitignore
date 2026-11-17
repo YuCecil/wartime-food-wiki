@@ -1,0 +1,10 @@
+# 原始資料有著作權，不上傳
+raw/
+inbox/*
+!inbox/.gitkeep
+# 本機環境
+.venv/
+__pycache__/
+.DS_Store
+.claude/settings.local.json
+.obsidian/

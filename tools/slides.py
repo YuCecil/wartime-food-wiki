@@ -431,7 +431,6 @@ def cmd_build(tid):
             say = mz[0].split("｜", 1)[1].strip() if "｜" in mz[0] else ""
             if say: mattr += f' data-say="{html.escape(say)}"'
         inner = ""
-        stamp = f'<span class="no" aria-hidden="true">{p["n"]}</span>'
         if L == "cover":
             sub = html.escape(plain(get("副標：")[0])) if get("副標：") else ""
             pic = f'<img class="cover-img" src="../../assets/img/{img}" alt="{html.escape(str(meta.get("imageAlt", "")))}">' if img else ""
@@ -441,7 +440,7 @@ def cmd_build(tid):
         elif L == "goals":
             items = "".join(f"<li>{html.escape(plain(l))}</li>" for l in lines if re.match(r"^(- |\d+\.)", l))
             other = "".join(f"<p>{html.escape(plain(l))}</p>" for l in lines if not re.match(r"^(- |\d+\.)", l))
-            inner = f"<h2>{stamp}{title}</h2>{other}<ol class='goals'>{items}</ol>"
+            inner = f"<h2>{title}</h2>{other}<ol class='goals'>{items}</ol>"
         elif L == "check":
             qa, q = [], None
             for l in lines:
@@ -449,7 +448,7 @@ def cmd_build(tid):
                     q = l
                 elif l.startswith("答案：") and q:
                     qa.append(f"<li><p>{html.escape(plain(q))}</p><details><summary>看答案</summary><p>{html.escape(plain(l))}</p></details></li>")
-            inner = f"<h2>{stamp}{title}</h2><ol class='qa'>{''.join(qa)}</ol>"
+            inner = f"<h2>{title}</h2><ol class='qa'>{''.join(qa)}</ol>"
         else:
             body = ""
             if L == "number" and get("大數字："):
@@ -468,7 +467,7 @@ def cmd_build(tid):
                         f"<figcaption>{html.escape(cap.strip())}</figcaption></figure>") + body
             if L == "quote":
                 body = f"<blockquote>{body}</blockquote>"
-            inner = f"<h2>{stamp}{title}</h2>{body}"
+            inner = f"<h2>{title}</h2>{body}"
         secs.append(f'<section class="slide layout-{L}"{mattr} id="p{p["n"]}" aria-label="第 {p["n"]} 頁"><div class="inner">{inner}</div></section>')
     if num:  # 最後一頁：資料來源（不算在 8–10 頁的內容頁裡）
         items = []
@@ -480,7 +479,7 @@ def cmd_build(tid):
                          f'　<a href="{GITHUB}wiki/sources/{s}.md" target="_blank" rel="noopener">資料卡</a></p></div></li>')
         n = len(pages) + 1
         secs.append(f'<section class="slide layout-sources" id="sources" aria-label="第 {n} 頁：資料來源"><div class="inner">'
-                    f'<h2><span class="no" aria-hidden="true">{n}</span>資料來源</h2><p class="src-hint">內文句尾的小數字對應這裡的編號；滑鼠停在數字上可看到頁碼。</p><ol class="srcs">{"".join(items)}</ol></div></section>')
+                    f'<h2>資料來源</h2><p class="src-hint">內文句尾的小數字對應這裡的編號；滑鼠停在數字上可看到頁碼。</p><ol class="srcs">{"".join(items)}</ol></div></section>')
     total = len(secs)
     tpl = (ROOT / "templates/deck.html").read_text(encoding="utf-8")
     out = (tpl.replace("{{TITLE}}", html.escape(meta["title"])).replace("{{CAT}}", cat)

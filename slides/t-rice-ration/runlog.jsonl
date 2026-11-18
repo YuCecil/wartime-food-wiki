@@ -31,3 +31,8 @@
 {"time": "2026-11-18T08:59:55", "gate": "渲染檢查", "round": 5, "result": "通過", "problems": [], "note": ""}
 {"time": "2026-11-18T09:00:19", "gate": "逐頁稿", "round": 7, "result": "通過", "problems": [], "note": ""}
 {"time": "2026-11-18T09:00:22", "gate": "渲染檢查", "round": 6, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-18T09:16:40", "gate": "逐頁稿", "round": 8, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-18T09:16:44", "gate": "渲染檢查", "round": 7, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-18T09:17:18", "gate": "渲染檢查", "round": 8, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-18T09:17:50", "gate": "逐頁稿", "round": 9, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-18T09:17:53", "gate": "渲染檢查", "round": 9, "result": "通過", "problems": [], "note": ""}

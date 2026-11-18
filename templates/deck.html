@@ -84,9 +84,17 @@ figcaption{font-size:.8em;color:var(--muted)}
 }
 /* 吉祥物：每次開啟隨機挑角色與頁面，放在頁角，不擋字 */
 .slide{position:relative}
-.mascot{position:absolute;height:clamp(96px,25%,190px);width:auto;pointer-events:none;user-select:none}
-.at-br{right:18px;bottom:14px}.at-tr{right:22px;top:16px}.at-bl{left:18px;bottom:14px}.at-tl{left:22px;top:16px}.at-mr{right:14px;top:40%}
-.mascot.flip{transform:scaleX(-1)}
+.mascot{position:absolute;display:flex;flex-direction:column;align-items:flex-end;gap:4px;pointer-events:none;user-select:none}
+.mascot.at-bl,.mascot.at-tl{align-items:flex-start}
+.mascot img{width:auto;display:block;order:2}
+.mascot.flip img{transform:scaleX(-1)}
+.mascot .say{order:1;background:#fff;border:2.5px solid #2b2b2b;border-radius:16px;padding:8px 12px;font-size:clamp(14px,1.5vw,18px);font-weight:700;line-height:1.45;max-width:10.5em;position:relative;color:#2b2b2b}
+.mascot .say::after{content:"";position:absolute;bottom:-8px;right:28%;width:12px;height:12px;background:#fff;border:solid #2b2b2b;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.mascot.at-bl .say::after,.mascot.at-tl .say::after{right:auto;left:28%}
+.at-br{right:22px;bottom:10px}.at-tr{right:22px;top:12px}.at-bl{left:22px;bottom:10px}.at-tl{left:22px;top:12px}.at-mr{right:22px;top:22%}
+/* 有吉祥物的頁：讓出一欄給角色（像老師的簡報），文字不會被擋 */
+.slide[data-mascot]:not(.layout-cover) .inner{padding-right:max(24%,250px)}
+.slide[data-spot="bl"]:not(.layout-cover) .inner,.slide[data-spot="tl"]:not(.layout-cover) .inner{padding-right:0;padding-left:max(24%,250px)}
 </style>
 </head>
 <body data-cat="{{CAT}}">
@@ -127,15 +135,16 @@ go(parseInt(location.hash.slice(1))||1);
    位置在顯示時才決定：依頁碼輪換優先順序，挑第一個不擋到文字的角落；都會擋就不放。 */
 const SPOTS=['br','tr','bl','mr','tl'];
 function placeMascot(s,n){const src=s.dataset.mascot;if(!src||s.dataset.placed)return;s.dataset.placed=1;
-  const img=new Image();img.alt='';img.className='mascot';img.src=src;
+  const box=document.createElement('div'),img=new Image();img.alt='';img.src=src;box.appendChild(img);
+  if(s.dataset.say){const b=document.createElement('div');b.className='say';b.textContent=s.dataset.say;box.appendChild(b)}
   img.onload=()=>{const txt=[...s.querySelectorAll('.inner h2,.inner p,.inner li,.inner .big,.inner .compare,.inner figure,.inner .cover')]
       .map(e=>{const r=e.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(e);const c=range.getBoundingClientRect();
         return {l:c.left||r.left,r:(c.right||r.right),t:r.top,b:r.bottom}});
     const rot=SPOTS.slice(n%SPOTS.length).concat(SPOTS.slice(0,n%SPOTS.length));const order=[...new Set([s.dataset.spot,...rot].filter(Boolean))];
-    s.appendChild(img);
-    for(const sp of order){img.className='mascot at-'+sp+(n%3===1?' flip':'');const m=img.getBoundingClientRect();
+    s.appendChild(box);const H=s.getBoundingClientRect().height;
+    for(const sp of order)for(const f of [.42,.34,.26]){img.style.height=Math.round(H*f)+'px';box.className='mascot at-'+sp+(n%3===1?' flip':'');const m=box.getBoundingClientRect();
       if(!txt.some(x=>x.r>m.left-8&&x.l<m.right+8&&x.b>m.top-8&&x.t<m.bottom+8))return;}
-    img.remove();};}
+    box.remove();};}
 const _go=go;go=function(n){_go(n);placeMascot(slides[cur-1],cur)};
 placeMascot(slides[cur-1],cur);
 </script>

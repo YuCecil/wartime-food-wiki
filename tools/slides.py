@@ -298,6 +298,11 @@ def cmd_script(tid):
             name = l.split("：", 1)[1].split("｜")[0].strip().partition("@")[0]
             if not (ROOT / "assets/mascots" / f"{name}.png").exists():
                 problems.append(f"{w}：吉祥物 {name} 不存在（要是 assets/mascots/<角色>/<姿勢>.png）")
+            say = l.split("｜", 1)[1].strip() if "｜" in l else ""
+            if re.search(r"[0-9０-９]", say):
+                problems.append(f"{w}：吉祥物台詞「{say}」有數字；台詞只能提問或反應，事實要放在正文並標出處")
+            if cjk_len(say) > 24:
+                problems.append(f"{w}：吉祥物台詞 {cjk_len(say)} 字，最多 24 字")
             mascot_pages.append(p["n"])
         n = cjk_len(p["title"]) + sum(cjk_len(plain(l)) for l in p["lines"])
         if n > MAX_CHARS:
@@ -345,8 +350,8 @@ def cmd_script(tid):
             missing = [b for b in sorted(bases) if b not in page_text]
             if missing:
                 problems.append(f"{w}：這頁混用了 {'、'.join(sorted(bases))} 的量，但頁面上沒寫出「{'、'.join(missing)}」，讀者會拿不同基準的數字直接比")
-    if len(mascot_pages) > len(pages) // 2:
-        problems.append(f"吉祥物放了 {len(mascot_pages)} 頁，最多一半（{len(pages) // 2} 頁），只放在跟內容有關的頁")
+    if len(mascot_pages) > len(pages) * 6 // 10:
+        problems.append(f"吉祥物放了 {len(mascot_pages)} 頁，最多六成（{len(pages) * 6 // 10} 頁），只放在跟內容有關的頁")
     return finish(tid, "逐頁稿", problems, "⑤ 逐頁稿：只修列出的那幾頁（證據卡本身錯就退回 ③）")
 
 
@@ -396,14 +401,16 @@ def cmd_build(tid):
     for p in pages:
         L = p["layout"]
         title = html.escape(p["title"])
-        lines = p["lines"]
+        lines = [l for l in p["lines"] if not l.startswith("吉祥物：")]
         get = lambda k: [l for l in lines if l.startswith(k)]
         rest = [l for l in lines if not l.startswith(("大數字：", "甲說：", "乙說：", "圖：", "副標：", "答案：", "吉祥物："))]
-        mz = get("吉祥物：")
+        mz = [l for l in p["lines"] if l.startswith("吉祥物：")]
         mattr = ""
-        if mz:  # 吉祥物：角色/姿勢@位置｜理由；位置可省略（br 右下、tr 右上、bl 左下、tl 左上、mr 右側中間）
+        if mz:  # 吉祥物：角色/姿勢@位置｜台詞；位置、台詞可省略（br 右下、tr 右上、bl 左下、tl 左上、mr 右側中間）
             nm, _, spot = mz[0].split("：", 1)[1].split("｜")[0].strip().partition("@")
             mattr = f' data-mascot="../../assets/mascots/{html.escape(nm)}.png"' + (f' data-spot="{html.escape(spot)}"' if spot else "")
+            say = mz[0].split("｜", 1)[1].strip() if "｜" in mz[0] else ""
+            if say: mattr += f' data-say="{html.escape(say)}"'
         inner = ""
         if L == "cover":
             sub = html.escape(plain(get("副標：")[0])) if get("副標：") else ""

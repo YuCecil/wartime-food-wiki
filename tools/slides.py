@@ -379,13 +379,24 @@ def cite_html(sid, e, cards):
     return f'<a class="cite" href="{GITHUB}wiki/sources/{sid}.md" target="_blank" rel="noopener">{html.escape(label)}</a>'
 
 
-def render_line(l, cards):
+def cite_label(sid, e, cards):
+    m = source_meta(sid) or {}
+    page = cards.get(f"{sid}#{e}", {}).get("頁", "")
+    return f"{m.get('author', sid)} {m.get('year', '')}" + (f"，頁 {page}" if page and page not in ("無", "—") else "")
+
+
+def render_line(l, cards, num=None):
+    """出處不放在正文：句尾只留小小的上標編號（同一份資料整份簡報同一個號碼），點了跳到最後的「資料來源」頁。"""
     cites = CITE.findall(l)
     text = html.escape(plain(l))
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
-    if cites:
-        links = list(dict.fromkeys(cite_html(s, e, cards) for s, e in cites))  # 同一份資料同一頁只列一次
-        text += ' <span class="cites">（' + "；".join(links) + "）</span>"
+    if cites and num:
+        refs = {}
+        for s, e in cites:
+            refs.setdefault(s, []).append(cite_label(s, e, cards))
+        sups = ",".join(f'<a class="fn" href="#sources" title="{html.escape("；".join(dict.fromkeys(v)))}">{num[s]}</a>' for s, v in sorted(refs.items(), key=lambda kv: num[kv[0]]))
+        # 最後一個字和上標綁在一起，避免編號自己掉到下一行
+        text = re.sub(r"(.)$", r'<span class="nb">\1', text) + f'<sup class="fns">{sups}</sup></span>'
     return text
 
 
@@ -395,6 +406,14 @@ def cmd_build(tid):
     if not pages:
         sys.exit("沒有 script.md")
     cards = parse_cards(tid)
+    num, used = {}, {}
+    for p in pages:
+        for l in p["lines"]:
+            for s, e in CITE.findall(l):
+                num.setdefault(s, len(num) + 1)
+                pg = cards.get(f"{s}#{e}", {}).get("頁", "")
+                if pg and pg not in ("無", "—"):
+                    used.setdefault(s, []).append(pg)
     cat = CAT.get(meta.get("category"), "rice")
     img = meta.get("image")
     secs = []
@@ -412,6 +431,7 @@ def cmd_build(tid):
             say = mz[0].split("｜", 1)[1].strip() if "｜" in mz[0] else ""
             if say: mattr += f' data-say="{html.escape(say)}"'
         inner = ""
+        stamp = f'<span class="no" aria-hidden="true">{p["n"]}</span>'
         if L == "cover":
             sub = html.escape(plain(get("副標：")[0])) if get("副標：") else ""
             pic = f'<img class="cover-img" src="../../assets/img/{img}" alt="{html.escape(str(meta.get("imageAlt", "")))}">' if img else ""
@@ -421,7 +441,7 @@ def cmd_build(tid):
         elif L == "goals":
             items = "".join(f"<li>{html.escape(plain(l))}</li>" for l in lines if re.match(r"^(- |\d+\.)", l))
             other = "".join(f"<p>{html.escape(plain(l))}</p>" for l in lines if not re.match(r"^(- |\d+\.)", l))
-            inner = f"<h2>{title}</h2>{other}<ol class='goals'>{items}</ol>"
+            inner = f"<h2>{stamp}{title}</h2>{other}<ol class='goals'>{items}</ol>"
         elif L == "check":
             qa, q = [], None
             for l in lines:
@@ -429,7 +449,7 @@ def cmd_build(tid):
                     q = l
                 elif l.startswith("答案：") and q:
                     qa.append(f"<li><p>{html.escape(plain(q))}</p><details><summary>看答案</summary><p>{html.escape(plain(l))}</p></details></li>")
-            inner = f"<h2>{title}</h2><ol class='qa'>{''.join(qa)}</ol>"
+            inner = f"<h2>{stamp}{title}</h2><ol class='qa'>{''.join(qa)}</ol>"
         else:
             body = ""
             if L == "number" and get("大數字："):
@@ -439,24 +459,36 @@ def cmd_build(tid):
                          f'<span class="big-label">{html.escape(bm.group(2) or "")}</span></p>')
             if L == "compare":
                 body += ('<div class="compare">' +
-                         "".join(f'<div class="side"><p class="who">{w}</p><p>{render_line(x, cards)}</p></div>'
+                         "".join(f'<div class="side"><p class="who">{w}</p><p>{render_line(x, cards, num)}</p></div>'
                                  for w, x in (("一種說法", get("甲說：")[0]), ("另一種說法", get("乙說：")[0]))) + "</div>")
-            body += "".join(f"<p>{render_line(l, cards)}</p>" for l in rest)
+            body += "".join(f"<p>{render_line(l, cards, num)}</p>" for l in rest)
             if L == "image" and get("圖："):
                 fn, _, cap = plain(get("圖：")[0]).partition("｜")
                 body = (f'<figure><img src="../../assets/img/{html.escape(fn.strip())}" alt="{html.escape(cap.strip())}">'
                         f"<figcaption>{html.escape(cap.strip())}</figcaption></figure>") + body
             if L == "quote":
                 body = f"<blockquote>{body}</blockquote>"
-            inner = f"<h2>{title}</h2>{body}"
+            inner = f"<h2>{stamp}{title}</h2>{body}"
         secs.append(f'<section class="slide layout-{L}"{mattr} id="p{p["n"]}" aria-label="第 {p["n"]} 頁"><div class="inner">{inner}</div></section>')
+    if num:  # 最後一頁：資料來源（不算在 8–10 頁的內容頁裡）
+        items = []
+        for s in num:
+            m = source_meta(s) or {}
+            pgs = "、".join(dict.fromkeys(used.get(s, [])))
+            items.append(f'<li><span class="src-no">{num[s]}</span><div><p class="src-t">{html.escape(str(m.get("author", s)))}（{m.get("year", "")}）〈{html.escape(str(m.get("title", "")))}〉</p>'
+                         f'<p class="src-m">{html.escape(str(m.get("venue", "")))}' + (f"　這份簡報用到：頁 {html.escape(pgs)}" if pgs else "") +
+                         f'　<a href="{GITHUB}wiki/sources/{s}.md" target="_blank" rel="noopener">資料卡</a></p></div></li>')
+        n = len(pages) + 1
+        secs.append(f'<section class="slide layout-sources" id="sources" aria-label="第 {n} 頁：資料來源"><div class="inner">'
+                    f'<h2><span class="no" aria-hidden="true">{n}</span>資料來源</h2><p class="src-hint">內文句尾的小數字對應這裡的編號；滑鼠停在數字上可看到頁碼。</p><ol class="srcs">{"".join(items)}</ol></div></section>')
+    total = len(secs)
     tpl = (ROOT / "templates/deck.html").read_text(encoding="utf-8")
     out = (tpl.replace("{{TITLE}}", html.escape(meta["title"])).replace("{{CAT}}", cat)
            .replace("{{SLIDES}}", "\n".join(secs))
            .replace("{{WIKI}}", f"{GITHUB}wiki/topics/{tid}.md")
-           .replace("{{TOTAL}}", str(len(pages))))
+           .replace("{{TOTAL}}", str(total)))
     (d(tid) / "deck.html").write_text(out, encoding="utf-8")
-    print(f"已產生 slides/{tid}/deck.html（{len(pages)} 頁）")
+    print(f"已產生 slides/{tid}/deck.html（內容 {len(pages)} 頁＋資料來源 1 頁）")
 
 
 # ---------------- ⑧ 渲染檢查 ----------------

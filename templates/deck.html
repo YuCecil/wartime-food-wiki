@@ -82,6 +82,11 @@ figcaption{font-size:.8em;color:var(--muted)}
   .stamp-num{font-size:2.4em}
   .bar{padding:8px 12px 12px;font-size:13px} .bar .wiki{display:none}
 }
+/* 吉祥物：每次開啟隨機挑角色與頁面，放在頁角，不擋字 */
+.slide{position:relative}
+.mascot{position:absolute;bottom:14px;height:clamp(84px,17%,150px);width:auto;pointer-events:none;user-select:none}
+.mascot.r{right:18px} .mascot.l{left:18px}
+.mascot.flip{transform:scaleX(-1)}
 </style>
 </head>
 <body data-cat="{{CAT}}">
@@ -117,6 +122,13 @@ addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].client
 addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
   if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))go(cur+(dx<0?1:-1));sx=null;},{passive:true});
 go(parseInt(location.hash.slice(1))||1);
+
+/* 吉祥物清單由 tools/slides.py build 從 assets/mascots/ 產生 */
+(()=>{const M={{MASCOTS}};if(!M.length)return;
+const pages=[...document.querySelectorAll('.slide')].filter(s=>!s.classList.contains('layout-cover'));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const n=Math.min(pages.length,3+Math.floor(Math.random()*2));
+pages.sort(()=>Math.random()-.5).slice(0,n).forEach(s=>{const i=new Image();i.src=pick(M);i.alt='';i.className='mascot r'+(Math.random()<.3?' flip':'')  /* 只放右下角：左下角在字多的頁會擋到字（已實測） */;s.appendChild(i)})})();
 </script>
 </body>
 </html>

@@ -432,7 +432,8 @@ def cmd_build(tid):
     out = (tpl.replace("{{TITLE}}", html.escape(meta["title"])).replace("{{CAT}}", cat)
            .replace("{{SLIDES}}", "\n".join(secs))
            .replace("{{WIKI}}", f"{GITHUB}wiki/topics/{tid}.md")
-           .replace("{{TOTAL}}", str(len(pages))))
+           .replace("{{TOTAL}}", str(len(pages)))
+           .replace("{{MASCOTS}}", json.dumps(sorted(f"../../{m.relative_to(ROOT).as_posix()}" for m in (ROOT / "assets/mascots").glob("*/*.png")))))
     (d(tid) / "deck.html").write_text(out, encoding="utf-8")
     print(f"已產生 slides/{tid}/deck.html（{len(pages)} 頁）")
 

@@ -8,3 +8,5 @@ __pycache__/
 .DS_Store
 .claude/settings.local.json
 .obsidian/
+# 渲染截圖可隨時重新產生，不上傳
+slides/*/shots/

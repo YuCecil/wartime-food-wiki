@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>番薯籤、野菜與蝸牛：代用食｜戰時餐桌故事簡報</title>
+<!-- 由 tools/slides.py build 從 script.md 產生，不要手改這個檔案；要改字請改 script.md，要改版面請改 templates/deck.html -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap">
+<style>
+:root{
+  --paper:#ECEEE8; --sheet:#F6F7F3; --ink:#1E2A3F; --indigo:#34548A; --muted:#5E6878; --line:#C7CDC4; --stamp:#B23A2E;
+  --rice-ink:#7A5206; --rice-tint:#F3D98F; --meat-ink:#93304A; --meat-tint:#F5C9D3; --rule-ink:#46607F; --rule-tint:#D2DCE9;
+  --market-ink:#7A4A1E; --market-tint:#E8CFB0; --life-ink:#3D6B38; --life-tint:#CFE3C4; --post-ink:#2A4677; --post-tint:#C9D5EC;
+  --kai:"LXGW WenKai TC","Kaiti TC","DFKai-SB",serif; --sans:"Noto Sans TC",system-ui,sans-serif;
+}
+[data-cat=rice]{--cat-ink:var(--rice-ink);--cat-tint:var(--rice-tint)} [data-cat=meat]{--cat-ink:var(--meat-ink);--cat-tint:var(--meat-tint)}
+[data-cat=rule]{--cat-ink:var(--rule-ink);--cat-tint:var(--rule-tint)} [data-cat=market]{--cat-ink:var(--market-ink);--cat-tint:var(--market-tint)}
+[data-cat=life]{--cat-ink:var(--life-ink);--cat-tint:var(--life-tint)} [data-cat=post]{--cat-ink:var(--post-ink);--cat-tint:var(--post-tint)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-text-size-adjust:100%}
+body{display:flex;flex-direction:column;overflow:hidden}
+.deck{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:16px;min-height:0}
+.slide{display:none;width:min(1100px,100%);aspect-ratio:16/9;max-height:100%;background:var(--sheet);border:1px solid var(--line);
+  border-top:6px solid var(--cat-ink)}
+.slide.active{display:flex}
+.inner{flex:1;overflow:hidden;padding:44px 64px;display:flex;flex-direction:column;justify-content:center;font-size:clamp(17px,1.75vw,22px);line-height:1.75}
+h1,h2{font-family:var(--kai);font-weight:700;line-height:1.3;margin:0 0 .7em;text-wrap:balance}
+h1{font-size:2.3em} h2{font-size:1.55em;color:var(--ink)}
+p{margin:0 0 .7em;max-width:36em} strong{color:var(--cat-ink)}
+/* 出處：句尾小上標，點了到最後的資料來源頁 */
+.fns{font-size:.58em;line-height:0;margin-left:.15em;font-family:var(--sans);font-weight:400;color:var(--muted)}
+.nb{white-space:nowrap}
+.fn{color:var(--indigo);text-decoration:none;padding:0 .08em}
+.fn:hover{text-decoration:underline}
+/* 資料來源頁 */
+.layout-sources .inner{font-size:clamp(13px,1.25vw,16px);line-height:1.5;justify-content:flex-start;padding:30px 56px}
+.src-hint{color:var(--muted);font-size:.9em;margin-bottom:.9em}
+ol.srcs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.7em 2em}
+ol.srcs li{display:grid;grid-template-columns:2em 1fr;gap:.4em}
+.src-no{color:var(--indigo);font-weight:700;font-variant-numeric:tabular-nums}
+.src-t{margin:0;font-weight:700} .src-m{margin:0;color:var(--muted);font-size:.9em}
+.src-m a{color:var(--indigo)}
+/* 封面：配給券 */
+.cover{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;height:100%}
+.ticket{display:flex;gap:22px;align-items:flex-start;background:var(--cat-tint);padding:28px 30px;border-left:2px dashed var(--cat-ink)}
+.stub{flex:none;width:58px;height:58px;border-radius:50%;border:2px solid var(--cat-ink);color:var(--cat-ink);display:grid;place-items:center;
+  font-family:var(--kai);font-size:30px;font-weight:700}
+.series{font-size:.8em;color:var(--cat-ink);margin-bottom:.4em;letter-spacing:.05em}
+.sub{font-size:1.05em}
+.meta{font-size:.75em;color:var(--muted);margin:0}
+.cover-img{width:100%;height:100%;max-height:100%;object-fit:cover;border:1px solid var(--line)}
+/* 學習目標、自我檢查 */
+ol.goals,ol.qa{margin:0;padding-left:1.4em} ol.goals li{margin:.35em 0;padding-left:.2em}
+ol.qa li{margin:.2em 0 .7em} ol.qa p{margin:0}
+details summary{cursor:pointer;color:var(--indigo);font-size:.85em}
+details p{font-size:.9em;color:var(--ink);margin-top:.3em!important}
+/* 大數字：全份簡報唯一使用印泥紅的地方 */
+.big{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:.4em}
+.stamp-num{font-family:var(--kai);font-size:3em;font-weight:700;color:var(--stamp);line-height:1.1}
+.big-label{color:var(--muted)}
+/* 兩種說法並列 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:.6em}
+.side{border-top:1px solid var(--line);padding-top:.6em}
+.who{font-family:var(--kai);font-weight:700;color:var(--cat-ink);margin-bottom:.3em}
+blockquote{margin:0;font-family:var(--kai);font-size:1.15em}
+figure{margin:0 0 .6em;display:flex;gap:24px;align-items:flex-end}
+figure img{max-height:46vh;max-width:55%;border:1px solid var(--line)}
+figcaption{font-size:.8em;color:var(--muted)}
+/* 下方工具列 */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 20px 14px;font-size:14px;color:var(--muted)}
+.bar a{color:var(--indigo)}
+.nav{display:flex;align-items:center;gap:10px}
+.nav button{font:inherit;color:var(--ink);background:var(--sheet);border:1px solid var(--line);min-width:44px;min-height:40px;cursor:pointer}
+.nav button:disabled{opacity:.4;cursor:default}
+.nav button:focus-visible,.fn:focus-visible,.src-m a:focus-visible,summary:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+.count{font-variant-numeric:tabular-nums;min-width:4em;text-align:center}
+.progress{height:3px;background:var(--line)} .progress span{display:block;height:100%;background:var(--cat-ink);transition:width .2s}
+@media (prefers-reduced-motion:reduce){.progress span{transition:none}}
+/* 手機：直式全螢幕，一頁一畫面 */
+@media (max-width:760px){
+  .deck{padding:0}
+  .slide{aspect-ratio:auto;height:100%;width:100%;border-left:0;border-right:0}
+  .inner{padding:22px 18px;font-size:16px;line-height:1.7;justify-content:flex-start}
+  h1{font-size:1.8em} h2{font-size:1.35em}
+  .cover{grid-template-columns:1fr;gap:16px;align-content:start}
+  .cover-img{height:auto;max-height:30vh}
+  .ticket{padding:18px}
+  .stub{width:44px;height:44px;font-size:22px}
+  .compare{grid-template-columns:1fr;gap:10px}
+  figure{flex-direction:column;align-items:flex-start;gap:6px} figure img{max-width:100%;max-height:24vh}
+  .stamp-num{font-size:2.4em}
+  .bar{padding:8px 12px 12px;font-size:13px} .bar .wiki{display:none}
+}
+/* 吉祥物：每次開啟隨機挑角色與頁面，放在頁角，不擋字 */
+.slide{position:relative}
+.mascot{position:absolute;display:flex;flex-direction:column;align-items:flex-end;gap:4px;pointer-events:none;user-select:none}
+.mascot.at-bl,.mascot.at-tl{align-items:flex-start}
+.mascot img{width:auto;display:block;order:2}
+.mascot.flip img{transform:scaleX(-1)}
+.mascot .say{order:1;background:#fff;border:2.5px solid #2b2b2b;border-radius:16px;padding:8px 12px;font-size:clamp(14px,1.5vw,18px);font-weight:700;line-height:1.45;max-width:10.5em;position:relative;color:#2b2b2b}
+.mascot .say::after{content:"";position:absolute;bottom:-8px;right:28%;width:12px;height:12px;background:#fff;border:solid #2b2b2b;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.mascot.at-bl .say::after,.mascot.at-tl .say::after{right:auto;left:28%}
+.at-br{right:22px;bottom:10px}.at-tr{right:22px;top:12px}.at-bl{left:22px;bottom:10px}.at-tl{left:22px;top:12px}.at-mr{right:22px;top:22%}
+/* 有吉祥物的頁：讓出一欄給角色（像老師的簡報），文字不會被擋 */
+.slide[data-mascot]:not(.layout-cover) .inner{padding-right:max(24%,250px)}
+.slide[data-spot="bl"]:not(.layout-cover) .inner,.slide[data-spot="tl"]:not(.layout-cover) .inner{padding-right:0;padding-left:max(24%,250px)}
+</style>
+</head>
+<body data-cat="rice">
+<main class="deck" id="deck">
+<section class="slide layout-cover" id="p1" aria-label="第 1 頁"><div class="inner"><div class="cover"><div class="ticket"><span class="stub">主</span><div><p class="series">戰時餐桌・故事簡報</p><h1>米不夠，吃什麼？</h1><p class="sub">政府推番薯籤和蝸牛，老百姓靠野菜和醬菜：戰時臺灣人怎麼應付食物不夠？</p><p class="meta">臺灣 1940–1949　·　共 10 頁　·　用 ← → 或滑動翻頁</p></div></div><img class="cover-img" src="../../assets/img/t-substitute-food.jpg" alt="木刻版畫風插畫：農家灶腳裡，母親把番薯籤拌進飯鍋，竹篩上晒著番薯籤，孩子蹲在灶邊。"></div></div></section>
+<section class="slide layout-goals" data-mascot="../../assets/mascots/sweetpotato/wave.png" data-spot="br" data-say="我是番薯仔，這次帶你看代用食！" id="p2" aria-label="第 2 頁"><div class="inner"><h2>看完這份簡報，你能……</h2><ol class='goals'><li>說得出米和其他食物不夠時，政府推過哪些代用食（至少兩種）</li><li>能說出官方推的代用食，和臺灣人自己靠的食物有什麼不同</li><li>能舉出一個數字，說明番薯、肉和魚到戰爭後期越來越少</li></ol></div></section>
+<section class="slide layout-text" id="p3" aria-label="第 3 頁"><div class="inner"><h2>米配給不夠時，備案是什麼？</h2><p>配給（政府分米的制度）不夠時，規定可以用番薯、麥、乾麵、樹薯等「代用食」（代替米飯的食物）替代<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 10">1</a></sup></span></p><p>稻米不是穩定的戰爭作物，所以臺灣的甘藷（番薯）被列為次要增產的備用糧；番薯對戰爭末期及戰後初期的糧食不足頗有貢獻<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="李力庸 2009，頁 81">2</a></sup></span></p><p>但 1943 年〈食糧管理令〉發布後，能吃的作物幾乎都由政府管制（統制），包括番薯<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="李力庸 2009，頁 81">2</a></sup></span></p><p>（推論）代用食是備案，但也不是想吃多少就有。</p></div></section>
+<section class="slide layout-text" data-mascot="../../assets/mascots/pig/basket.png" data-spot="bl" data-say="蝸牛、兔肉……真的能當菜嗎？" id="p4" aria-label="第 4 頁"><div class="inner"><h2>政府推的代用食：從番薯到蝸牛</h2><p>政府鼓吹：用番薯籤、樹薯粉代替米，用蝸牛、兔肉當蛋白質來源，用烘焙後的番仔豆代替咖啡<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 20">1</a></sup></span></p><p>也推廣「共同炊煮」（大家一起煮飯），減少食材與燃料的損耗<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 20">1</a></sup></span></p><p>勸導家庭休假時至少吃一餐番薯，總督長谷川清也吃番薯便當作宣示<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="蔡承豪 2024，頁 20">3</a></sup></span></p><p>魚頭與魚骨的料理食譜開始出現，咖啡也有用大豆、番薯做的代用品<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="蔡承豪 2024，頁 21">3</a></sup></span></p><p>1943 年年底起，米食最多只能占主食的七成，並以番薯、香蕉、烏龍麵代用<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="蔡承豪 2024，頁 20">3</a></sup></span></p></div></section>
+<section class="slide layout-compare" data-mascot="../../assets/mascots/rice/ask.png" data-spot="br" data-say="官方推的，合我們的胃口嗎？" id="p5" aria-label="第 5 頁"><div class="inner"><h2>官方推的鄉土食，大家買單嗎？</h2><div class="compare"><div class="side"><p class="who">一種說法</p><p>「鄉土食」指帶有在地生活習慣的食物，但官方選定的有午餐麵包、燒蕎麥麵等，不是麵包就是麵條，和本地吃粥、飯的習慣差很多<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2013，頁 131">4</a></sup></span></p></div><div class="side"><p class="who">另一種說法</p><p>臺灣人從自己的飲食傳統出發，用既有的救荒技術和烹調方式；城裡人在空地養雞鴨、種花生和番薯，親友互相周濟<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 20">1</a>,<a class="fn" href="#sources" title="曾品滄 2013，頁 131">4</a></sup></span></p></div></div><p>作者認為，官方的「鄉土食」只是用鄉村素材做的代用食，不是真正包含在地生活習慣的食物，所以沒有引起廣大的回應<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2013，頁 131">4</a></sup></span></p></div></section>
+<section class="slide layout-text" data-mascot="../../assets/mascots/pig/confused.png" data-spot="bl" data-say="原本餵我的菜，大家也搶著吃？" id="p6" aria-label="第 6 頁"><div class="inner"><h2>野菜、醬菜回到飯桌</h2><p>原本被遺忘的傳統食物和救荒食物重新回到餐桌，醃製的醬瓜、豆豉可以配飯<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 20">1</a></sup></span></p><p>野生的黑甜仔（龍葵）、雞肉絲菇、野莧可以補充配飯的菜；原本當豬飼料的茄茉菜，大家也搶著吃<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 21">1</a></sup></span></p><p>野生的青蛙、泥鰍成了豬肉、魚肉的替代品<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2013，頁 131">4</a></sup></span></p><p>教師陳氏菫霞在 1944 年的《民俗臺灣》寫道：從前沒有人垂青的蔭豉、菜脯、醃瓜和豆乳，現在都成了不可或缺的下飯菜<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2013，頁 134">4</a></sup></span></p><p>文中還說：「即使對這些寒酸的菜餚，也得深懷謝意」<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2013，頁 134">4</a></sup></span></p></div></section>
+<section class="slide layout-number" id="p7" aria-label="第 7 頁"><div class="inner"><h2>米交出去，番薯留在家裡</h2><p class="big"><span class="stamp-num">6.28%</span><span class="big-label">1944 年，臺灣的甘藷（番薯）交給政府的比例</span></p><p>同一年，臺灣米的供出率（交給政府的比例）是 85.30%；日本的甘藷供出率是 56.48%<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="李力庸 2009，頁 94">2</a></sup></span></p><p>作者推測，這可能是因為臺灣人用大量甘藷來取代米食<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="李力庸 2009，頁 94">2</a></sup></span></p><p>戰時，中上階層的家庭也逐漸以番薯或薯籤果腹，連霧峰林獻堂家族這樣的富人也不例外<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2013，頁 132">4</a></sup></span></p></div></section>
+<section class="slide layout-text" data-mascot="../../assets/mascots/sweetpotato/think.png" data-spot="br" data-say="吃的東西，怎麼越變越少？" id="p8" aria-label="第 8 頁"><div class="inner"><h2>連番薯、肉和魚都越來越少</h2><p>下面是估算的全島平均「可供量」（公克／人／天），不是實際吃進去的量<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2018，頁 125">5</a></sup></span></p><p>作者提醒，這項估算在細節上受到質疑<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2018，頁 126">5</a></sup></span></p><p>番薯：1935–39 平均 309 公克，1940–44 平均 250 公克，1945 年只剩 184 公克<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2018，頁 125">5</a></sup></span></p><p>肉（三個時期同上）：51、30、16 公克；魚：56、27、6 公克<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2018，頁 125">5</a></sup></span></p><p>1945 年新竹的黃旺成在日記寫：米欠了三天（沒米可吃），中午吃樹薯粉，各僅半飽<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 19">1</a></sup></span></p></div></section>
+<section class="slide layout-summary" id="p9" aria-label="第 9 頁"><div class="inner"><h2>重點回顧</h2><p>米配給不夠時，規定用番薯、麥、乾麵、樹薯等代用食替代<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 10">1</a></sup></span></p><p>政府推番薯籤、樹薯粉、蝸牛、兔肉等代用食<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 20">1</a></sup></span></p><p>官方的鄉土食不是麵包就是麵條；臺灣人則靠既有的救荒技術和烹調方式<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2013，頁 131">4</a></sup></span></p><p>戰時人們也靠野菜、醬菜和青蛙、泥鰍，補充配飯的菜<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2017，頁 21">1</a>,<a class="fn" href="#sources" title="曾品滄 2013，頁 131">4</a></sup></span></p><p>1944 年臺灣的米供出率是 85.30%，甘藷只有 6.28%<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="李力庸 2009，頁 94">2</a></sup></span></p><p>估算的可供量顯示，番薯從 1935–39 平均 309 公克降到 1945 年 184 公克<span class="nb">。<sup class="fns"><a class="fn" href="#sources" title="曾品滄 2018，頁 125">5</a></sup></span></p></div></section>
+<section class="slide layout-check" data-mascot="../../assets/mascots/sweetpotato/thumbsup.png" data-spot="br" data-say="每題都能答出來，你就是番薯通！" id="p10" aria-label="第 10 頁"><div class="inner"><h2>自我檢查</h2><ol class='qa'><li><p>米和其他食物不夠時，政府推過哪些代用食？舉出兩種。</p><details><summary>看答案</summary><p>番薯籤、樹薯粉代替米；蝸牛、兔肉補蛋白質；番仔豆代替咖啡（任兩種）。（第 4 頁）</p></details></li><li><p>官方選的「鄉土食」，和臺灣人自己靠的食物差在哪裡？</p><details><summary>看答案</summary><p>官方選麵包、麵條類，不合吃粥飯的習慣；臺灣人靠野菜、醬菜等原有的救荒食物。（第 5、6 頁）</p></details></li><li><p>舉出一個數字，說明番薯也越來越不夠吃。</p><details><summary>看答案</summary><p>估算的番薯可供量，從 1935–39 平均 309 公克降到 1945 年 184 公克。（第 8 頁）</p></details></li></ol></div></section>
+<section class="slide layout-sources" id="sources" aria-label="第 11 頁：資料來源"><div class="inner"><h2>資料來源</h2><p class="src-hint">內文句尾的小數字對應這裡的編號；滑鼠停在數字上可看到頁碼。</p><ol class="srcs"><li><span class="src-no">1</span><div><p class="src-t">曾品滄（2017）〈餐桌上的戰爭：日治末期臺灣的食物配給、黑市與殖民地社會〉</p><p class="src-m">新史學 28卷4期，頁1–42　這份簡報用到：頁 10、20、21、19　<a href="https://github.com/YuCecil/wartime-food-wiki/blob/main/wiki/sources/s-2017-tseng-table-war.md" target="_blank" rel="noopener">資料卡</a></p></div></li><li><span class="src-no">2</span><div><p class="src-t">李力庸（2009）〈日本帝國殖民地的戰時糧食統制體制：臺灣與朝鮮的比較研究（1937-1945）〉</p><p class="src-m">臺灣史研究 16:2（頁 63-104）　這份簡報用到：頁 81、94　<a href="https://github.com/YuCecil/wartime-food-wiki/blob/main/wiki/sources/s-2009-li-grain-regulation.md" target="_blank" rel="noopener">資料卡</a></p></div></li><li><span class="src-no">3</span><div><p class="src-t">蔡承豪（2024）〈戰爭時期的糧食管制〉</p><p class="src-m">國立臺灣圖書館網站 PDF（頁 18-20；刊名與期數未印出）　這份簡報用到：頁 20、21　<a href="https://github.com/YuCecil/wartime-food-wiki/blob/main/wiki/sources/s-2024-tsai-wartime-food-control.md" target="_blank" rel="noopener">資料卡</a></p></div></li><li><span class="src-no">4</span><div><p class="src-t">曾品滄（2013）〈鄉土食和山水亭：戰爭期間「臺灣料理」的發展（1937-1945）〉</p><p class="src-m">中國飲食文化 9(1)（頁 113-156）　這份簡報用到：頁 131、134、132　<a href="https://github.com/YuCecil/wartime-food-wiki/blob/main/wiki/sources/s-2013-tseng-hometown.md" target="_blank" rel="noopener">資料卡</a></p></div></li><li><span class="src-no">5</span><div><p class="src-t">曾品滄（2018）〈戰時體制與臺灣大眾飲食的發展（1947–1950 年代）〉</p><p class="src-m">Journal of Current Chinese Affairs 47(2): 113–136　這份簡報用到：頁 125、126　<a href="https://github.com/YuCecil/wartime-food-wiki/blob/main/wiki/sources/s-2018-tseng-public-diet.md" target="_blank" rel="noopener">資料卡</a></p></div></li></ol></div></section>
+</main>
+<div class="progress" aria-hidden="true"><span id="prog"></span></div>
+<nav class="bar" aria-label="翻頁">
+  <a href="../../index.html">← 所有簡報</a>
+  <div class="nav">
+    <button id="prev" aria-label="上一頁">←</button>
+    <span class="count" id="count" aria-live="polite">1 / 11</span>
+    <button id="next" aria-label="下一頁">→</button>
+  </div>
+  <a class="wiki" href="https://github.com/YuCecil/wartime-food-wiki/blob/main/wiki/topics/t-substitute-food.md" target="_blank" rel="noopener">這個故事的 wiki 頁</a>
+</nav>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let cur=1;
+function go(n){cur=Math.max(1,Math.min(slides.length,n));
+  slides.forEach((s,i)=>s.classList.toggle('active',i===cur-1));
+  document.getElementById('count').textContent=cur+' / '+slides.length;
+  document.getElementById('prog').style.width=(cur/slides.length*100)+'%';
+  document.getElementById('prev').disabled=cur===1;document.getElementById('next').disabled=cur===slides.length;
+  history.replaceState(null,'','#'+cur);}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+addEventListener('keydown',e=>{if(e.target.closest('summary'))return;
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}
+  if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}
+  if(e.key==='Home')go(1); if(e.key==='End')go(slides.length);});
+let sx=null,sy=null;
+addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))go(cur+(dx<0?1:-1));sx=null;},{passive:true});
+go(parseInt(location.hash.slice(1))||1);
+
+/* 吉祥物：script.md 每頁可選一行「吉祥物：角色/姿勢」，由寫稿的人依內容挑。
+   位置在顯示時才決定：依頁碼輪換優先順序，挑第一個不擋到文字的角落；都會擋就不放。 */
+const SPOTS=['br','tr','bl','mr','tl'];
+function placeMascot(s,n){const src=s.dataset.mascot;if(!src||s.dataset.placed)return;s.dataset.placed=1;
+  const box=document.createElement('div'),img=new Image();img.alt='';img.src=src;box.appendChild(img);
+  if(s.dataset.say){const b=document.createElement('div');b.className='say';b.textContent=s.dataset.say;box.appendChild(b)}
+  img.onload=()=>{const txt=[...s.querySelectorAll('.inner h2,.inner p,.inner li,.inner .big,.inner .compare,.inner figure,.inner .cover')]
+      .map(e=>{const r=e.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(e);const c=range.getBoundingClientRect();
+        return {l:c.left||r.left,r:(c.right||r.right),t:r.top,b:r.bottom}});
+    const rot=SPOTS.slice(n%SPOTS.length).concat(SPOTS.slice(0,n%SPOTS.length));const order=[...new Set([s.dataset.spot,...rot].filter(Boolean))];
+    s.appendChild(box);const H=s.getBoundingClientRect().height;
+    for(const sp of order)for(const f of [.42,.34,.26]){img.style.height=Math.round(H*f)+'px';box.className='mascot at-'+sp+(n%3===1?' flip':'');const m=box.getBoundingClientRect();
+      if(!txt.some(x=>x.r>m.left-8&&x.l<m.right+8&&x.b>m.top-8&&x.t<m.bottom+8))return;}
+    box.remove();};}
+const _go=go;go=function(n){_go(n);placeMascot(slides[cur-1],cur)};
+placeMascot(slides[cur-1],cur);
+document.addEventListener('click',e=>{const a=e.target.closest('.fn');if(a){e.preventDefault();go(slides.length)}});
+</script>
+</body>
+</html>

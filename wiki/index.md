@@ -12,9 +12,9 @@
 | [躲空襲躲到鄉下：疏開](topics/t-evacuation.md) | 為了躲空襲搬到鄉下，不少日本人得靠臺灣農家吃飯、過日子。 | 6 | 還沒做 |
 | [四萬元換一元：惡性通膨](topics/t-inflation.md) | 鈔票越印越多，四年間發行量增加兩百多倍。 | 4 | 還沒做 |
 | [十天一次的豬肉](topics/t-pork-and-sides.md) | 豬肉是臺灣人餐桌和祭桌的核心，黑市裡的豬肉交易特別盛行。 | 3 | 還沒做 |
-| [戰爭結束了，米卻更少了：戰後米荒](topics/t-postwar-famine.md) | 終戰後一斤米從 1.9 元漲到 71 元，臺灣人反而買不起米。 | 10 | 還沒做 |
+| [戰爭結束了，米卻更少了：戰後米荒](topics/t-postwar-famine.md) | 終戰後一斤米從 1.9 元漲到 71 元，臺灣人反而買不起米。 | 10 | [簡報](../slides/t-postwar-famine/deck.html) |
 | [一天能吃多少米？米穀配給](topics/t-rice-ration.md) | 1940 年起，臺灣人吃的每一粒米都由政府分配。 | 11 | [簡報](../slides/t-rice-ration/deck.html) |
-| [番薯籤、野菜與蝸牛：代用食](topics/t-substitute-food.md) | 米不夠，就用番薯籤、樹薯粉和田邊的野菜補。 | 6 | 還沒做 |
+| [番薯籤、野菜與蝸牛：代用食](topics/t-substitute-food.md) | 米不夠，就用番薯籤、樹薯粉和田邊的野菜補。 | 6 | [簡報](../slides/t-substitute-food/deck.html) |
 | [嘴上說平等：分等級的配給](topics/t-unequal-ration.md) | 口號是「內臺一體」，但豬肉、砂糖、木炭都分三六九等。 | 1 | 還沒做 |
 | [孩子吃什麼：戰時的營養與學童](topics/t-wartime-children.md) | 戰時國家開始量孩子的「體位」，孩子實際吃了什麼，史料卻很少。 | 6 | 還沒做 |
 

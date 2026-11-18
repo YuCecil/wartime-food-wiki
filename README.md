@@ -2,7 +2,10 @@
 
 一個用 LLM 維護的研究筆記庫（Karpathy 提出的 LLM Wiki 做法），主題是戰爭期間到戰後初期（1937–1949）臺灣人吃什麼、怎麼吃：米穀配給、代用食、黑市、戰後米荒……；再用這個 wiki 為每個故事做一份給初學者自學的 HTML 簡報。
 
-- **看簡報**：GitHub Pages 首頁（`index.html`）
+- **看簡報**：<https://yucecil.github.io/wartime-food-wiki/>
+  - [一天能吃多少米？米穀配給](https://yucecil.github.io/wartime-food-wiki/slides/t-rice-ration/deck.html)
+  - [米不夠，吃什麼？代用食](https://yucecil.github.io/wartime-food-wiki/slides/t-substitute-food/deck.html)
+  - [戰爭結束了，米卻更少了：戰後米荒](https://yucecil.github.io/wartime-food-wiki/slides/t-postwar-famine/deck.html)
 - **看 wiki**：[wiki/index.md](wiki/index.md)（故事、人物與機構、資料卡的總目錄）
 - **流程圖**：[docs/流程圖.md](docs/流程圖.md)
 - **需求訪談**：[docs/需求訪談.md](docs/需求訪談.md)

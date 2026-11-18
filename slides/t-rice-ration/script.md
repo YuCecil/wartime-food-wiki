@@ -15,6 +15,7 @@
 日本本土要到 10 月才跟進，**殖民地反而比本土早一步**。[s-2017-huang-wartime-food-management#E2]
 
 ## 4 | text | 米從田裡到餐桌的關卡
+吉祥物：pig/ticket@br｜第 4 頁講配給券
 **收米**：農家扣掉自己要吃的和種子，其餘由政府用公定價格強制收購。[s-2017-tseng-table-war#E2]
 **綁住**：沒交足規定的量，就領不到配給。[s-2015-tseng-postwar-food-control#E2]
 **盯著**：經濟警察負責確保糧食配給、限制自由買賣。[s-2025-lu-police-society#E1]
@@ -22,6 +23,7 @@
 **買米**：一般家庭拿著配給券，大約一個月去買兩次米。[s-2009-li-grain-regulation#E6]
 
 ## 5 | number | 收成的米，有多少要交出去？
+吉祥物：cassava/sack@tr｜第 5 頁講米交出去
 大數字：85.30%｜1944 年，臺灣的米交給政府的比例 [s-2009-li-grain-regulation#E3]
 這個比例叫「供出率」：交給政府的量，占實際收成的多少。[s-2009-li-grain-regulation#E3]
 同一年，朝鮮是 63.47%，日本本土是 60.46%，**臺灣最高**。[s-2009-li-grain-regulation#E3]
@@ -33,6 +35,7 @@
 330 公克的七分搗米約是 2 合 3 勺；臺灣用糙米（只去殼、沒碾白的米）計算，就是 **2 合 5 勺**。[s-2017-huang-wartime-food-management#E3]
 
 ## 7 | text | 標準一路往下砍，實際拿到的更少
+吉祥物：rice/bowl@mr｜第 7 頁講實際拿到的更少
 標準：一般人每天糙米 2 合 5 勺，寫成小數是 2.50 合（「勺」是比「合」小的單位）。[s-2017-tseng-table-war#E4][s-2017-huang-wartime-food-management#E9]
 1940 年 3 月，新竹市把一般人的配給從 2 合 5 勺減成 2 合 2 勺。[s-2017-tseng-table-war#E7]
 4 月，澎湖一般人只配 2 合，產米的屏東更只有 1.7 合。[s-2017-tseng-table-war#E7]
@@ -46,6 +49,7 @@
 米去了哪裡？她推測可能流向軍隊：終戰前在臺陸軍約 30 萬人。[s-2017-huang-wartime-food-management#E8]
 
 ## 9 | text | 米不夠吃，大家怎麼辦？
+吉祥物：sweetpotato/basket@br｜第 9 頁講用番薯代替米
 **吃番薯**：1944 年臺灣的番薯只交出 6.28%，作者推測大家用大量番薯代替米。[s-2009-li-grain-regulation#E3][s-2009-li-grain-regulation#E4]
 住在臺中霧峰的林獻堂在日記裡寫，配給米減了兩成，「非以蕃薯代用不可」。[s-2017-tseng-table-war#E8]
 **找黑市**：配給米不夠，就透過黑市買，或在飯裡摻番薯籤。[s-2017-huang-wartime-food-management#E5]
@@ -53,6 +57,7 @@
 義勇報國隊是總督府 1944 年 8 月底打算設立的民兵組織。[s-2025-lu-police-society#E4]
 
 ## 10 | check | 自我檢查
+吉祥物：pig/thinking@bl｜自我檢查
 1. 戰爭末期（1943 年底以後），一般家庭怎麼拿到米？
 答案：農家的米由政府收購，交給食糧營團配給，家庭拿配給券去買。（第 4 頁）
 2. 1940 年起一般人每天的配給標準是多少？哪裡配得比標準少？

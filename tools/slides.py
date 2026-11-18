@@ -271,7 +271,7 @@ def parse_script(tid):
 
 
 def plain(s):
-    return re.sub(r"^(大數字|說明|甲說|乙說|圖|答案|副標|- |\d+\. )：?", "", CITE.sub("", s)).strip()
+    return re.sub(r"^(大數字|說明|甲說|乙說|圖|答案|副標|吉祥物|- |\d+\. )：?", "", CITE.sub("", s)).strip()
 
 
 def cjk_len(s):
@@ -285,12 +285,20 @@ def cmd_script(tid):
         return finish(tid, "逐頁稿", ["沒有 script.md，或標題格式不是「## 頁碼 | 版型 | 標題」"], "⑤ 逐頁稿")
     cards = parse_cards(tid)
     _, opages = parse_outline(tid) or ([], [])
+    mascot_pages = []
     if len(pages) != len([p for p in opages if "bad" not in p]):
         problems.append(f"逐頁稿 {len(pages)} 頁，跟確認過的大綱頁數不一樣")
     for p in pages:
         w = f"第 {p['n']} 頁"
         if p["layout"] not in LAYOUTS:
             problems.append(f"{w}：版型 {p['layout']} 不存在")
+        mas = [l for l in p["lines"] if l.startswith("吉祥物：")]
+        p["lines"] = [l for l in p["lines"] if not l.startswith("吉祥物：")]
+        for l in mas:
+            name = l.split("：", 1)[1].split("｜")[0].strip().partition("@")[0]
+            if not (ROOT / "assets/mascots" / f"{name}.png").exists():
+                problems.append(f"{w}：吉祥物 {name} 不存在（要是 assets/mascots/<角色>/<姿勢>.png）")
+            mascot_pages.append(p["n"])
         n = cjk_len(p["title"]) + sum(cjk_len(plain(l)) for l in p["lines"])
         if n > MAX_CHARS:
             problems.append(f"{w}：{n} 字，超過 {MAX_CHARS} 字（手機會放不下）")
@@ -337,6 +345,8 @@ def cmd_script(tid):
             missing = [b for b in sorted(bases) if b not in page_text]
             if missing:
                 problems.append(f"{w}：這頁混用了 {'、'.join(sorted(bases))} 的量，但頁面上沒寫出「{'、'.join(missing)}」，讀者會拿不同基準的數字直接比")
+    if len(mascot_pages) > len(pages) // 2:
+        problems.append(f"吉祥物放了 {len(mascot_pages)} 頁，最多一半（{len(pages) // 2} 頁），只放在跟內容有關的頁")
     return finish(tid, "逐頁稿", problems, "⑤ 逐頁稿：只修列出的那幾頁（證據卡本身錯就退回 ③）")
 
 
@@ -388,7 +398,12 @@ def cmd_build(tid):
         title = html.escape(p["title"])
         lines = p["lines"]
         get = lambda k: [l for l in lines if l.startswith(k)]
-        rest = [l for l in lines if not l.startswith(("大數字：", "甲說：", "乙說：", "圖：", "副標：", "答案："))]
+        rest = [l for l in lines if not l.startswith(("大數字：", "甲說：", "乙說：", "圖：", "副標：", "答案：", "吉祥物："))]
+        mz = get("吉祥物：")
+        mattr = ""
+        if mz:  # 吉祥物：角色/姿勢@位置｜理由；位置可省略（br 右下、tr 右上、bl 左下、tl 左上、mr 右側中間）
+            nm, _, spot = mz[0].split("：", 1)[1].split("｜")[0].strip().partition("@")
+            mattr = f' data-mascot="../../assets/mascots/{html.escape(nm)}.png"' + (f' data-spot="{html.escape(spot)}"' if spot else "")
         inner = ""
         if L == "cover":
             sub = html.escape(plain(get("副標：")[0])) if get("副標：") else ""
@@ -427,13 +442,12 @@ def cmd_build(tid):
             if L == "quote":
                 body = f"<blockquote>{body}</blockquote>"
             inner = f"<h2>{title}</h2>{body}"
-        secs.append(f'<section class="slide layout-{L}" id="p{p["n"]}" aria-label="第 {p["n"]} 頁"><div class="inner">{inner}</div></section>')
+        secs.append(f'<section class="slide layout-{L}"{mattr} id="p{p["n"]}" aria-label="第 {p["n"]} 頁"><div class="inner">{inner}</div></section>')
     tpl = (ROOT / "templates/deck.html").read_text(encoding="utf-8")
     out = (tpl.replace("{{TITLE}}", html.escape(meta["title"])).replace("{{CAT}}", cat)
            .replace("{{SLIDES}}", "\n".join(secs))
            .replace("{{WIKI}}", f"{GITHUB}wiki/topics/{tid}.md")
-           .replace("{{TOTAL}}", str(len(pages)))
-           .replace("{{MASCOTS}}", json.dumps(sorted(f"../../{m.relative_to(ROOT).as_posix()}" for m in (ROOT / "assets/mascots").glob("*/*.png")))))
+           .replace("{{TOTAL}}", str(len(pages))))
     (d(tid) / "deck.html").write_text(out, encoding="utf-8")
     print(f"已產生 slides/{tid}/deck.html（{len(pages)} 頁）")
 

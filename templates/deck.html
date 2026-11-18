@@ -84,8 +84,8 @@ figcaption{font-size:.8em;color:var(--muted)}
 }
 /* 吉祥物：每次開啟隨機挑角色與頁面，放在頁角，不擋字 */
 .slide{position:relative}
-.mascot{position:absolute;bottom:14px;height:clamp(84px,17%,150px);width:auto;pointer-events:none;user-select:none}
-.mascot.r{right:18px} .mascot.l{left:18px}
+.mascot{position:absolute;height:clamp(96px,25%,190px);width:auto;pointer-events:none;user-select:none}
+.at-br{right:18px;bottom:14px}.at-tr{right:22px;top:16px}.at-bl{left:18px;bottom:14px}.at-tl{left:22px;top:16px}.at-mr{right:14px;top:40%}
 .mascot.flip{transform:scaleX(-1)}
 </style>
 </head>
@@ -123,12 +123,21 @@ addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0]
   if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))go(cur+(dx<0?1:-1));sx=null;},{passive:true});
 go(parseInt(location.hash.slice(1))||1);
 
-/* 吉祥物清單由 tools/slides.py build 從 assets/mascots/ 產生 */
-(()=>{const M={{MASCOTS}};if(!M.length)return;
-const pages=[...document.querySelectorAll('.slide')].filter(s=>!s.classList.contains('layout-cover'));
-const pick=a=>a[Math.floor(Math.random()*a.length)];
-const n=Math.min(pages.length,3+Math.floor(Math.random()*2));
-pages.sort(()=>Math.random()-.5).slice(0,n).forEach(s=>{const i=new Image();i.src=pick(M);i.alt='';i.className='mascot r'+(Math.random()<.3?' flip':'')  /* 只放右下角：左下角在字多的頁會擋到字（已實測） */;s.appendChild(i)})})();
+/* 吉祥物：script.md 每頁可選一行「吉祥物：角色/姿勢」，由寫稿的人依內容挑。
+   位置在顯示時才決定：依頁碼輪換優先順序，挑第一個不擋到文字的角落；都會擋就不放。 */
+const SPOTS=['br','tr','bl','mr','tl'];
+function placeMascot(s,n){const src=s.dataset.mascot;if(!src||s.dataset.placed)return;s.dataset.placed=1;
+  const img=new Image();img.alt='';img.className='mascot';img.src=src;
+  img.onload=()=>{const txt=[...s.querySelectorAll('.inner h2,.inner p,.inner li,.inner .big,.inner .compare,.inner figure,.inner .cover')]
+      .map(e=>{const r=e.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(e);const c=range.getBoundingClientRect();
+        return {l:c.left||r.left,r:(c.right||r.right),t:r.top,b:r.bottom}});
+    const rot=SPOTS.slice(n%SPOTS.length).concat(SPOTS.slice(0,n%SPOTS.length));const order=[...new Set([s.dataset.spot,...rot].filter(Boolean))];
+    s.appendChild(img);
+    for(const sp of order){img.className='mascot at-'+sp+(n%3===1?' flip':'');const m=img.getBoundingClientRect();
+      if(!txt.some(x=>x.r>m.left-8&&x.l<m.right+8&&x.b>m.top-8&&x.t<m.bottom+8))return;}
+    img.remove();};}
+const _go=go;go=function(n){_go(n);placeMascot(slides[cur-1],cur)};
+placeMascot(slides[cur-1],cur);
 </script>
 </body>
 </html>

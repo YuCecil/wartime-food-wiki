@@ -27,3 +27,7 @@
 {"time": "2026-11-18T08:56:25", "gate": "渲染檢查", "round": 3, "result": "通過", "problems": [], "note": ""}
 {"time": "2026-11-18T08:56:58", "gate": "渲染檢查", "round": 4, "result": "通過", "problems": [], "note": ""}
 {"time": "2026-11-18T08:57:06", "gate": "人工：交件", "round": 1, "result": "通過", "problems": [], "note": "可以，但要加上吉祥物插圖（已加）"}
+{"time": "2026-11-18T08:59:51", "gate": "逐頁稿", "round": 6, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-18T08:59:55", "gate": "渲染檢查", "round": 5, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-18T09:00:19", "gate": "逐頁稿", "round": 7, "result": "通過", "problems": [], "note": ""}
+{"time": "2026-11-18T09:00:22", "gate": "渲染檢查", "round": 6, "result": "通過", "problems": [], "note": ""}
